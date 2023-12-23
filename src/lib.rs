@@ -286,6 +286,8 @@ cfg_if! {
     } else if #[cfg(target_os = "hurd")] {
         mod util_libc;
         #[path = "hurd.rs"] mod imp;
+	}else if #[cfg(target_vendor="sipeed")]{
+		#[path = "sipeed.rs"] mod imp;
     } else if #[cfg(feature = "custom")] {
         use custom as imp;
     } else if #[cfg(all(any(target_arch = "wasm32", target_arch = "wasm64"),
